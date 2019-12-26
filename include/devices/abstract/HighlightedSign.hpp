@@ -13,6 +13,6 @@ namespace Devices::HighlightedSign {
 namespace Devices::HighlightedSign::Abstract {
     class IHighlightedSign {
         public:
-            virtual bool setBlinkingLevel(BlinkingLevel level) = 0;
+            virtual unsigned char setBlinkingLevel(BlinkingLevel level) = 0;
     };
 }

@@ -3,7 +3,7 @@
 namespace Devices::CarEngineStateSensor {
     struct EngineState {
         bool isEngineStarted = false;
-        bool error = false;
+        unsigned char error = 0;
     };
 }
 

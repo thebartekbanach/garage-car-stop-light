@@ -2,9 +2,9 @@
 
 namespace Devices::DistanceSensor {
     struct Distance {
-        unsigned short distance = 0; // in centimeters
-        bool tooFar = false; // when car is too far should be set to true
-        bool error = false;
+        float distance; // in centimeters
+        bool tooFar; // when car is too far should be set to true
+        unsigned char error;
     };
 }
 
