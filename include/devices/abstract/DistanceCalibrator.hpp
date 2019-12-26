@@ -2,8 +2,8 @@
 
 namespace Devices::DistanceCalibrator {
     struct DistanceCalibrationValue {
-        short value = 0; // in centimeters
-        unsigned char error = 0;
+        short value; // in centimeters
+        unsigned char error;
     };
 }
 
