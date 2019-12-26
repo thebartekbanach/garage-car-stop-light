@@ -87,7 +87,7 @@ namespace Core {
                     blinkingLevel = getBlinkingLevelFor(distance.distance, calibrationValue.value);
                 }
 
-                const unsigned char blinkingLevelSetResult = highlightedSing->setBlinkingLevel(blinkingLevel);
+                const unsigned char blinkingLevelSetResult = highlightedSing->setBlinkingLevel(blinkingLevel, distance.distance);
 
                 stateIndicator->update(
                     *config,
