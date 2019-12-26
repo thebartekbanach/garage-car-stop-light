@@ -1,7 +1,5 @@
 #include <Arduino.h>
 
-#include "utils/Log.hpp"
-
 #include "diagnostics/diagnostics.hpp"
 
 #ifndef DIAGNOSTICS_MODE_ENABLED
