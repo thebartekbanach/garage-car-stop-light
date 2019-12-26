@@ -2,8 +2,8 @@
 
 namespace Devices::CarEngineStateSensor {
     struct EngineState {
-        bool isEngineStarted = false;
-        unsigned char error = 0;
+        bool isEngineStarted;
+        unsigned char error;
     };
 }
 
