@@ -8,15 +8,15 @@
 
 #include "Configuration.hpp"
 
-using Devices::DistanceCalibrator::Abstract::IDistanceCalibrator;
-using Devices::CarEngineStateSensor::Abstract::ICarEngineStateSensor;
-using Devices::DistanceSensor::Abstract::IDistanceSensor;
-using Devices::HighlightedSign::Abstract::IHighlightedSign;
-using Devices::StateIndicator::Abstract::IStateIndicator;
-
-using Devices::HighlightedSign::BlinkingLevel;
-
 namespace Core {
+    using Devices::DistanceCalibrator::Abstract::IDistanceCalibrator;
+    using Devices::CarEngineStateSensor::Abstract::ICarEngineStateSensor;
+    using Devices::DistanceSensor::Abstract::IDistanceSensor;
+    using Devices::HighlightedSign::Abstract::IHighlightedSign;
+    using Devices::StateIndicator::Abstract::IStateIndicator;
+
+    using Devices::HighlightedSign::BlinkingLevel;
+
     class Program {
         private:
             IDistanceCalibrator* distanceCalibrator;

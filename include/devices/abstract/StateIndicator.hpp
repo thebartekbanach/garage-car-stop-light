@@ -6,14 +6,14 @@
 
 #include "../../Configuration.hpp"
 
-using Devices::DistanceSensor::Distance;
-using Devices::CarEngineStateSensor::EngineState;
-using Devices::DistanceCalibrator::DistanceCalibrationValue;
-using Devices::HighlightedSign::BlinkingLevel;
-
-using Core::Configuration;
-
 namespace Devices::StateIndicator::Abstract {
+    using Devices::DistanceSensor::Distance;
+    using Devices::CarEngineStateSensor::EngineState;
+    using Devices::DistanceCalibrator::DistanceCalibrationValue;
+    using Devices::HighlightedSign::BlinkingLevel;
+
+    using Core::Configuration;
+
     class IStateIndicator {
         public:
             virtual void update(
