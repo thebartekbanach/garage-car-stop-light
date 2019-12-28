@@ -31,7 +31,15 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
             }
 
             const bool highlightState = blinker.updateAndGetActualHighlightState();
-            digitalWrite(highlightState, config.highlightSteeringPin);
+            const bool lightState = highlightState == true
+                ? !config.turnedOnElectricState
+                : config.turnedOnElectricState;
+
+            digitalWrite(
+                config.highlightSteeringPin,
+                lightState
+            );
+                
             return 0;
         }
     };

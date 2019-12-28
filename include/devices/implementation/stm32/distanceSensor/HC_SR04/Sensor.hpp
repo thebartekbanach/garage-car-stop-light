@@ -18,7 +18,7 @@ namespace Devices::DistanceSensor::Implementation::Stm32::HC_SR04 {
                 config(_configuration),
                 sensor(config.triggerPin, config.echoPin) {}
 
-            const Distance& measure() override {
+            const Distance measure() override {
                 Utils::Averager averager(config.numberOfPingsPerScan);
                 unsigned short errors = 0;
 

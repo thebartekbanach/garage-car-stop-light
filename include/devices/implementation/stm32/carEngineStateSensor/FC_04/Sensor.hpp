@@ -16,7 +16,7 @@ namespace Devices::CarEngineStateSensor::Implementation::Stm32::FC_04 {
                     pinMode(configuration.sensorDataInputPin, INPUT_PULLUP);
                 }
 
-            const EngineState& sense() override {
+            const EngineState sense() override {
                 unsigned short numberOfPositiveDetections = 0;
 
                 for (unsigned short i = 0; i < config.numberOfSensesPerMeansurement; ++i) {

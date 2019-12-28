@@ -15,7 +15,7 @@ namespace Devices::DistanceCalibrator::Implementation::Stm32::Potentiometer_10K 
                     pinMode(config.potentiometerDataInputPin, INPUT_ANALOG);
                 }
 
-            const DistanceCalibrationValue& getValue() override {
+            const DistanceCalibrationValue getValue() override {
                 const unsigned short value = analogRead(config.potentiometerDataInputPin);
                 const unsigned short result = map(
                     value,

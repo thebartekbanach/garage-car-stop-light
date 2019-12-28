@@ -10,6 +10,6 @@ namespace Devices::CarEngineStateSensor {
 namespace Devices::CarEngineStateSensor::Abstract {
     class ICarEngineStateSensor {
         public:
-            virtual const EngineState& sense() = 0;
+            virtual const EngineState sense() = 0;
     };
 }

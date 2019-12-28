@@ -11,6 +11,6 @@ namespace Devices::DistanceSensor {
 namespace Devices::DistanceSensor::Abstract {
     class IDistanceSensor {
         public:
-            virtual const Distance& measure() = 0;
+            virtual const Distance measure() = 0;
     };
 }

@@ -10,6 +10,6 @@ namespace Devices::DistanceCalibrator {
 namespace Devices::DistanceCalibrator::Abstract {
     class IDistanceCalibrator {
         public:
-            virtual const DistanceCalibrationValue& getValue() = 0;
+            virtual const DistanceCalibrationValue getValue() = 0;
     };
 }
