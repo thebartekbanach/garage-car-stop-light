@@ -19,8 +19,9 @@ namespace Devices::DistanceCalibrator::Implementation::Stm32::Potentiometer_10K 
                 const unsigned short value = analogRead(config.potentiometerDataInputPin);
                 const unsigned short result = map(
                     value,
-                    0, 4096,
-                    0, config.maximumAdditionValueOfPotentiometer
+                    10, 4050,
+                    config.minimumAdditionValueOfPotentiometer,
+                    config.maximumAdditionValueOfPotentiometer
                 );
                 
                 return {
