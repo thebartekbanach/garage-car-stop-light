@@ -67,9 +67,9 @@ namespace Core {
             {}
 
             void update() {
-                const auto& engineState = carEngineSensor->sense();
-                const auto& distance = distanceSensor->measure();
-                const auto& calibrationValue = distanceCalibrator->getValue();
+                const auto &engineState = carEngineSensor->sense();
+                const auto &distance = distanceSensor->measure();
+                const auto &calibrationValue = distanceCalibrator->getValue();
 
                 bool emergencyMode = engineState.error || distance.error || calibrationValue.error;
 
@@ -87,14 +87,13 @@ namespace Core {
                     blinkingLevel = getBlinkingLevelFor(distance.distance, calibrationValue.value);
                 }
 
-                const unsigned char blinkingLevelSetResult = highlightedSing->setBlinkingLevel(blinkingLevel, distance.distance);
+                const auto &blinkingLevelSetResult = highlightedSing->setBlinkingLevel(blinkingLevel, distance.distance);
 
                 stateIndicator->update(
                     *config,
                     distance,
                     engineState,
                     calibrationValue,
-                    blinkingLevel,
                     blinkingLevelSetResult
                 );
             }
