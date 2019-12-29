@@ -16,17 +16,14 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
 
             const LightingScheme& getLightingSchemeForLevel(const BlinkingLevel &level) {
                 switch (level) {
-                    case BlinkingLevel::NEAR:
-                        return lightingSchemes.stopLighingScheme;
-
                     case BlinkingLevel::MEDIUM:
-                        return lightingSchemes.mediumLighingScheme;
+                        return lightingSchemes.mediumLightingScheme;
 
                     case BlinkingLevel::FAR:
-                        return lightingSchemes.farLighingScheme;
+                        return lightingSchemes.farLightingScheme;
 
-                    default: /* BlinkingLevel::STOP */
-                        return lightingSchemes.stopLighingScheme;
+                    default: /* BlinkingLevel::NEAR */
+                        return lightingSchemes.nearLightingScheme;
                 }
             }
 
@@ -60,7 +57,7 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
                 }
 
                 if (blinkingLevel == BlinkingLevel::STOP) {
-                    return false;
+                    return true;
                 }
 
                 if (lightingTimer.done()) {

@@ -22,9 +22,16 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
                         config.highlightSteeringPin,
                         config.highlightPinWiringMode
                     );
+
+                    if (config.mirrorBlinkingOnLedBuiltin) {
+                        pinMode(
+                            LED_BUILTIN,
+                            WiringPinMode::OUTPUT
+                        );
+                    }
                 }
 
-        unsigned char setBlinkingLevel(BlinkingLevel level, unsigned short distanceInCm = 0) override {
+        const HighlightSetResult setBlinkingLevel(const BlinkingLevel &level, const unsigned short &distanceInCm) override {
             if (lastBlinkingLevel != level) {
                 lastBlinkingLevel = level;
                 blinker.setNewBlinkingLevel(level);
@@ -32,15 +39,26 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
 
             const bool highlightState = blinker.updateAndGetActualHighlightState();
             const bool lightState = highlightState == true
-                ? !config.turnedOnElectricState
-                : config.turnedOnElectricState;
+                ? config.turnedOnElectricState
+                : !config.turnedOnElectricState;
 
             digitalWrite(
                 config.highlightSteeringPin,
                 lightState
             );
+
+            if (config.mirrorBlinkingOnLedBuiltin) {
+                digitalWrite(
+                    LED_BUILTIN,
+                    lightState
+                );
+            }
                 
-            return 0;
+            return {
+                .level = level,
+                .actualState = !lightState,
+                .error = 0
+            };
         }
     };
 }

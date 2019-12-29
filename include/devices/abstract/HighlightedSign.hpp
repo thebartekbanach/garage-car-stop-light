@@ -8,11 +8,17 @@ namespace Devices::HighlightedSign {
         FAR = 3,
         OFF = 4
     };
+
+    struct HighlightSetResult {
+        BlinkingLevel level;
+        bool actualState;
+        unsigned char error;
+    };
 }
 
 namespace Devices::HighlightedSign::Abstract {
     class IHighlightedSign {
         public:
-            virtual unsigned char setBlinkingLevel(BlinkingLevel level, unsigned short distanceInCm = 0) = 0;
+            virtual const HighlightSetResult setBlinkingLevel(const BlinkingLevel &level, const unsigned short &distanceInCm = 0) = 0;
     };
 }

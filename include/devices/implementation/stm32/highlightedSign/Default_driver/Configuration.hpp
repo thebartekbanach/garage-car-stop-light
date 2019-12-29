@@ -8,10 +8,9 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
     };
 
     struct LightingSchemes {
-        LightingScheme stopLighingScheme;
-        LightingScheme nearLighingScheme;
-        LightingScheme mediumLighingScheme;
-        LightingScheme farLighingScheme;
+        LightingScheme nearLightingScheme;
+        LightingScheme mediumLightingScheme;
+        LightingScheme farLightingScheme;
     };
 
     struct DefaultDriver_Configuration {
@@ -19,5 +18,6 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
         unsigned short highlightSteeringPin;
         bool turnedOnElectricState;
         LightingSchemes lightingSchemes;
+        bool mirrorBlinkingOnLedBuiltin;
     };
 }
