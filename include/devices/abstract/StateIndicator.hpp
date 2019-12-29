@@ -10,7 +10,7 @@ namespace Devices::StateIndicator::Abstract {
     using Devices::DistanceSensor::Distance;
     using Devices::CarEngineStateSensor::EngineState;
     using Devices::DistanceCalibrator::DistanceCalibrationValue;
-    using Devices::HighlightedSign::BlinkingLevel;
+    using Devices::HighlightedSign::HighlightSetResult;
 
     using Core::Configuration;
 
@@ -21,8 +21,7 @@ namespace Devices::StateIndicator::Abstract {
                 const Distance &distance,
                 const EngineState &engineState,
                 const DistanceCalibrationValue &value,
-                const BlinkingLevel &blinkingLevel,
-                const unsigned char &blinkingSetResult
+                const HighlightSetResult &highlightSetResult
             ) = 0;
     };
 }
