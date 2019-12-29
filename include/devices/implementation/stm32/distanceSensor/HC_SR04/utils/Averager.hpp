@@ -12,6 +12,10 @@ namespace Devices::DistanceSensor::Implementation::Stm32::HC_SR04::Utils {
                 numberOfAveragedItems(_numberOfAveragedItems),
                 meansurements(new float[numberOfAveragedItems] { 0 }) {}
 
+            ~Averager() {
+                delete[] meansurements;
+            }
+
             void addMeansurement(const float &value) {
                 if (actualIndex >= numberOfAveragedItems) {
                     actualIndex = 0;
