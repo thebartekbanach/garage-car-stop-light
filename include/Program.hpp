@@ -32,7 +32,7 @@ namespace Core {
                     return BlinkingLevel::OFF;
                 }
 
-                else if (distance <= (config->stopDistance + calibrationValue)) {
+                else if (distance <= (config->stopDistance + calibrationValue + 1)) {
                     return BlinkingLevel::STOP;
                 }
                 
