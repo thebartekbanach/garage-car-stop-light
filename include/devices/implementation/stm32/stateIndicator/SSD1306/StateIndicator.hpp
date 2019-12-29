@@ -112,10 +112,10 @@ namespace Devices::StateIndicator::Implementation::Stm32::SSD1306 {
 
             char* getBlinkingLevelAsString(const BlinkingLevel &level) {
                 switch (level) {
-                    case BlinkingLevel::OFF: return "OFF";
-                    case BlinkingLevel::NEAR: return "+";
-                    case BlinkingLevel::MEDIUM: return "++";
-                    case BlinkingLevel::FAR: return "+++";
+                    case BlinkingLevel::OFF: return "---";
+                    case BlinkingLevel::NEAR: return "+++";
+                    case BlinkingLevel::MEDIUM: return "++-";
+                    case BlinkingLevel::FAR: return "+--";
                     default: return "###";
                 }
             }
