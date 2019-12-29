@@ -17,16 +17,16 @@ namespace Devices::DistanceCalibrator::Implementation::Stm32::Potentiometer {
 
             const DistanceCalibrationValue getValue() override {
                 const unsigned short value = analogRead(config.potentiometerDataInputPin);
-                const unsigned short result = map(
+                const short result = map(
                     value,
-                    10, 4050,
+                    10, 4000,
                     config.minimumAdditionValueOfPotentiometer,
                     config.maximumAdditionValueOfPotentiometer
                 );
                 
                 return {
                     .value = result,
-                    .error = 0
+                    .error = (unsigned char) 0
                 };
             }
     };

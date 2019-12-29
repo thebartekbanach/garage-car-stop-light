@@ -47,6 +47,10 @@ namespace Core {
                 else if (distance <= config->farDistance) {
                     return BlinkingLevel::FAR;
                 }
+
+                else {
+                    return BlinkingLevel::STOP;
+                }
             }
 
         public:
@@ -58,12 +62,12 @@ namespace Core {
                 IHighlightedSign* _highlightedSing,
                 IStateIndicator* _stateIndicator
             ):
-                config(_config),
                 distanceCalibrator(_distanceCalibrator),
                 carEngineSensor(_carEngineSensor),
                 distanceSensor(_distanceSensor),
                 highlightedSing(_highlightedSing),
-                stateIndicator(_stateIndicator)
+                stateIndicator(_stateIndicator),
+                config(_config)
             {}
 
             void update() {
