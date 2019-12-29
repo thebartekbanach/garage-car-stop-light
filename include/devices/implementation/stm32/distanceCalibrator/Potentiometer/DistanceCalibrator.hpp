@@ -5,12 +5,12 @@
 
 #include "Configuration.hpp"
 
-namespace Devices::DistanceCalibrator::Implementation::Stm32::Potentiometer_10K {
-    class Potentiometer_10K_DistanceCalibrator: public Abstract::IDistanceCalibrator {
+namespace Devices::DistanceCalibrator::Implementation::Stm32::Potentiometer {
+    class Potentiometer_DistanceCalibrator: public Abstract::IDistanceCalibrator {
         private:
-            const Potentiometer_10K_Configuration &config;
+            const Potentiometer_Configuration &config;
         public:
-            Potentiometer_10K_DistanceCalibrator(const Potentiometer_10K_Configuration &_configuration):
+            Potentiometer_DistanceCalibrator(const Potentiometer_Configuration &_configuration):
                 config(_configuration) {
                     pinMode(config.potentiometerDataInputPin, INPUT_ANALOG);
                 }
