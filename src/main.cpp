@@ -4,6 +4,6 @@
 
 #ifndef DIAGNOSTICS_MODE_ENABLED
 
-#include "Presets.hpp"
+#include "presets/Presets.hpp"
 
 #endif

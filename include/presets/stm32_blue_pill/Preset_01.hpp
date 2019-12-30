@@ -7,17 +7,38 @@
 *   - Potentiometer as a stop distance calibrator
 *   - Default driver of highlighted sign
 */
-#define USE_SETUP_1
-#ifdef USE_SETUP_1
+
+// HC-SR04 ultrasonic distance sensor configuration
+#define HC_SR04_TRIGGER_PIN PB10
+#define HC_SR04_ECHO_PIN PB11
+
+// FC-04 sound sensor configuration
+#define FC_04_DATA_PIN PB4
+
+// Distance calibration potentiometer configuration
+#define POTENTIOMETER_OUTPUT_PIN PA7
+
+// Highlight switch transistor settings
+#define HIGHLIGHT_STEERING_PIN PB13
+#define HIGHLIGHT_TURNED_ON_ELECTRIC_STATE LOW
+
+// Distnaces setup
+#define STOP_DISTANCE 5
+#define NEAR_DISTANCE 30
+#define MEDIUM_DISTANCE 80
+#define FAR_DISTANCE 150
+
+
+
 #include <Arduino.h>
 
-#include "../distanceSensor/HC_SR04/Sensor.hpp"
-#include "../carEngineStateSensor/FC_04/Sensor.hpp"
-#include "../distanceCalibrator/Potentiometer/DistanceCalibrator.hpp"
-#include "../highlightedSign/Default_driver/Driver.hpp"
-#include "../stateIndicator/SSD1306/StateIndicator.hpp"
+#include "../../devices/implementation/stm32/distanceSensor/HC_SR04/Sensor.hpp"
+#include "../../devices/implementation/stm32/carEngineStateSensor/FC_04/Sensor.hpp"
+#include "../../devices/implementation/stm32/distanceCalibrator/Potentiometer/DistanceCalibrator.hpp"
+#include "../../devices/implementation/stm32/highlightedSign/Default_driver/Driver.hpp"
+#include "../../devices/implementation/stm32/stateIndicator/SSD1306/StateIndicator.hpp"
 
-#include "../../../../Program.hpp"
+#include "../../Core/Program.hpp"
 
 using namespace Devices;
 
@@ -31,33 +52,33 @@ Core::Program *program = nullptr;
     
 void setup() {
     auto *distanceSensorConfig = new DistanceSensor::Implementation::Stm32::HC_SR04::HC_SR04_Configuration();
-    distanceSensorConfig->triggerPin = PB10;
-    distanceSensorConfig->echoPin = PB11;
+    distanceSensorConfig->triggerPin = HC_SR04_TRIGGER_PIN;
+    distanceSensorConfig->echoPin = HC_SR04_ECHO_PIN;
 
     auto *carEngineSensorConfig = new CarEngineStateSensor::Implementation::Stm32::FC_04::FC_04_Configuration();
-    carEngineSensorConfig->sensorDataInputPin = PB4;
+    carEngineSensorConfig->sensorDataInputPin = FC_04_DATA_PIN;
 
     auto *distanceCalibratorConfig = new DistanceCalibrator::Implementation::Stm32::Potentiometer::Potentiometer_Configuration();
-    distanceCalibratorConfig->potentiometerDataInputPin = PA7;
+    distanceCalibratorConfig->potentiometerDataInputPin = POTENTIOMETER_OUTPUT_PIN;
     distanceCalibratorConfig->maximumAdditionValueOfPotentiometer = 5;
-    distanceCalibratorConfig->minimumAdditionValueOfPotentiometer = -3;
+    distanceCalibratorConfig->minimumAdditionValueOfPotentiometer = -2;
 
     auto *highlightedSignConfig = new HighlightedSign::Implementation::Stm32::Default_driver::DefaultDriver_Configuration();
     highlightedSignConfig->highlightPinWiringMode = WiringPinMode::OUTPUT;
-    highlightedSignConfig->highlightSteeringPin = PB13;
-    highlightedSignConfig->turnedOnElectricState = LOW;
+    highlightedSignConfig->highlightSteeringPin = HIGHLIGHT_STEERING_PIN;
+    highlightedSignConfig->turnedOnElectricState = HIGHLIGHT_TURNED_ON_ELECTRIC_STATE;
     highlightedSignConfig->mirrorBlinkingOnLedBuiltin = true;
     highlightedSignConfig->lightingSchemes = {
         .nearLightingScheme = {
             .onTime = 300,
-            .offTime = 300
+            .offTime = 200
         },
         .mediumLightingScheme = {
             .onTime = 300,
             .offTime = 800
         },
         .farLightingScheme = {
-            .onTime = 300,
+            .onTime = 400,
             .offTime = 1400
         }
     };
@@ -69,7 +90,10 @@ void setup() {
     stateIndicator = new StateIndicator::Implementation::Stm32::SSD1306::SSD1306_StateIndicator();
 
     Core::Configuration *programConfig = new Core::Configuration();
-    programConfig->stopDistance = 5;
+    programConfig->stopDistance = STOP_DISTANCE;
+    programConfig->nearDistance = NEAR_DISTANCE;
+    programConfig->mediumDistance = MEDIUM_DISTANCE;
+    programConfig->farDistance = FAR_DISTANCE;
 
     program = new Core::Program(
         programConfig,
@@ -84,5 +108,3 @@ void setup() {
 void loop() {
     program->update();
 }
-
-#endif

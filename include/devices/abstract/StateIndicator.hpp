@@ -4,7 +4,7 @@
 #include "DistanceSensor.hpp"
 #include "HighlightedSign.hpp"
 
-#include "../../Configuration.hpp"
+#include "../../Core/Configuration.hpp"
 
 namespace Devices::StateIndicator::Abstract {
     using Devices::DistanceSensor::Distance;

@@ -10,7 +10,7 @@ namespace Devices::HighlightedSign::Implementation::Stm32::Default_driver {
         private:
             const LightingSchemes &lightingSchemes;
 
-            BlinkingLevel blinkingLevel = BlinkingLevel::STOP;
+            BlinkingLevel blinkingLevel = BlinkingLevel::OFF;
             bool actualLightState = false;
             Timer lightingTimer;
 
