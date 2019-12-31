@@ -6,6 +6,7 @@
 *   - FC-04 sound sensor as car engine state sensor
 *   - Potentiometer as a stop distance calibrator
 *   - Default driver of highlighted sign
+*   - SSD1306 display as a state indicator
 */
 
 // HC-SR04 ultrasonic distance sensor configuration
