@@ -53,7 +53,7 @@ StateIndicator::Abstract::IStateIndicator *stateIndicator = nullptr;
 Core::Program *program = nullptr;
     
 void setup() {
-    iwdg_init(IWDG_PRE_32, 625);
+    iwdg_init(IWDG_PRE_64, 625);
 
     auto *distanceSensorConfig = new DistanceSensor::Implementation::Stm32::HC_SR04::HC_SR04_Configuration();
     distanceSensorConfig->triggerPin = HC_SR04_TRIGGER_PIN;
@@ -74,16 +74,16 @@ void setup() {
     highlightedSignConfig->mirrorBlinkingOnLedBuiltin = true;
     highlightedSignConfig->lightingSchemes = {
         .nearLightingScheme = {
-            .onTime = 300,
-            .offTime = 200
+            .onTime = 100,
+            .offTime = 100
         },
         .mediumLightingScheme = {
-            .onTime = 300,
-            .offTime = 800
+            .onTime = 100,
+            .offTime = 300
         },
         .farLightingScheme = {
-            .onTime = 400,
-            .offTime = 1400
+            .onTime = 200,
+            .offTime = 800
         }
     };
 
