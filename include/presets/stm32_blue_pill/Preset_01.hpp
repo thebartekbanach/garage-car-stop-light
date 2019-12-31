@@ -32,11 +32,11 @@
 
 #include <Arduino.h>
 
-#include "../../devices/implementation/stm32/distanceSensor/HC_SR04/Sensor.hpp"
-#include "../../devices/implementation/stm32/carEngineStateSensor/FC_04/Sensor.hpp"
-#include "../../devices/implementation/stm32/distanceCalibrator/Potentiometer/DistanceCalibrator.hpp"
-#include "../../devices/implementation/stm32/highlightedSign/Default_driver/Driver.hpp"
-#include "../../devices/implementation/stm32/stateIndicator/SSD1306/StateIndicator.hpp"
+#include "../../devices/implementation/stm32_blue_pill/distanceSensor/HC_SR04/Sensor.hpp"
+#include "../../devices/implementation/stm32_blue_pill/carEngineStateSensor/FC_04/Sensor.hpp"
+#include "../../devices/implementation/stm32_blue_pill/distanceCalibrator/Potentiometer/DistanceCalibrator.hpp"
+#include "../../devices/implementation/stm32_blue_pill/highlightedSign/Default_driver/Driver.hpp"
+#include "../../devices/implementation/stm32_blue_pill/stateIndicator/SSD1306/StateIndicator.hpp"
 
 #include "../../Core/Program.hpp"
 
