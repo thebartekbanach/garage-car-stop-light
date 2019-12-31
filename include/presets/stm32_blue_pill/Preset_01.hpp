@@ -32,6 +32,7 @@
 
 
 #include <Arduino.h>
+#include <libmaple/iwdg.h>
 
 #include "../../devices/implementation/stm32_blue_pill/distanceSensor/HC_SR04/Sensor.hpp"
 #include "../../devices/implementation/stm32_blue_pill/carEngineStateSensor/FC_04/Sensor.hpp"
@@ -52,6 +53,8 @@ StateIndicator::Abstract::IStateIndicator *stateIndicator = nullptr;
 Core::Program *program = nullptr;
     
 void setup() {
+    iwdg_init(IWDG_PRE_32, 625);
+
     auto *distanceSensorConfig = new DistanceSensor::Implementation::Stm32::HC_SR04::HC_SR04_Configuration();
     distanceSensorConfig->triggerPin = HC_SR04_TRIGGER_PIN;
     distanceSensorConfig->echoPin = HC_SR04_ECHO_PIN;
@@ -108,4 +111,5 @@ void setup() {
 
 void loop() {
     program->update();
+    iwdg_feed();
 }
