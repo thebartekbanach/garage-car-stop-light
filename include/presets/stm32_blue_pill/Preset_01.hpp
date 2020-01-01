@@ -6,7 +6,7 @@
 *   - FC-04 sound sensor as car engine state sensor
 *   - Potentiometer as a stop distance calibrator
 *   - Default driver of highlighted sign
-*   - SSD1306 display as a state indicator
+*   - without state indicator
 */
 
 // HC-SR04 ultrasonic distance sensor configuration
@@ -38,7 +38,7 @@
 #include "../../devices/implementation/stm32_blue_pill/carEngineStateSensor/FC_04/Sensor.hpp"
 #include "../../devices/implementation/stm32_blue_pill/distanceCalibrator/Potentiometer/DistanceCalibrator.hpp"
 #include "../../devices/implementation/stm32_blue_pill/highlightedSign/Default_driver/Driver.hpp"
-#include "../../devices/implementation/stm32_blue_pill/stateIndicator/SSD1306/StateIndicator.hpp"
+#include "../../devices/implementation/stm32_blue_pill/stateIndicator/withoutStateIndicator/WithoutStateIndicator.hpp"
 
 #include "../../Core/Program.hpp"
 
@@ -91,7 +91,7 @@ void setup() {
     carEngineStateSensor = new CarEngineStateSensor::Implementation::Stm32::FC_04::FC_04_CarEngineStateSensor(*carEngineSensorConfig);
     distanceCalibrator = new DistanceCalibrator::Implementation::Stm32::Potentiometer::Potentiometer_DistanceCalibrator(*distanceCalibratorConfig);
     highlightedSign = new HighlightedSign::Implementation::Stm32::Default_driver::DefaultDriver_HiglightedSign(*highlightedSignConfig);
-    stateIndicator = new StateIndicator::Implementation::Stm32::SSD1306::SSD1306_StateIndicator();
+    stateIndicator = new StateIndicator::Implementation::Stm32::WithoutStateIndicator::WithoutStateIndicator();
 
     Core::Configuration *programConfig = new Core::Configuration();
     programConfig->stopDistance = STOP_DISTANCE;
