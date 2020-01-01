@@ -1,6 +1,8 @@
 # Garage parking assistant
 
-Parking assistant in the garage is a simple engine
+### Language: **English** / [Polski](./README.pl.md)
+
+Garage parking assistant is a simple engine
 which we upload to our target controller.
 
 ## Main goals of this project:
